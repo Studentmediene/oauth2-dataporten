@@ -1,5 +1,5 @@
 {
-  "name": "smint/feide-auth",
+  "name": "smint/oauth2-feide",
   "description": "oauth2 client for feide-login",
   "authors": [
     {
