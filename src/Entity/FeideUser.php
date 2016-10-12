@@ -17,27 +17,49 @@ class FeideUser implements ResourceOwnerInterface
     }
 
 
+    public function getName()
+    {
+        return $this->getField("name");
+    }
+
     public function getId()
     {
-        return $this->getField('id');
+        return $this->getField('userid');
     }
 
-    public function getFirstName(){
-        return $this->getField("first_name");
+    /**
+     * @deprecated Not used by feide, Use getName()
+     */
+    public function getFirstName()
+    {
+        $name = $this->getName();
+        return $name;
     }
 
-    public function getLastName(){
-        return $this->getField("last_name");
+    /**
+     * @deprecated Not used by feide, Use getName()
+     */
+    public function getLastName()
+    {
+        $name = $this->getName();
+        return $name;
     }
 
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->getField("email");
     }
 
+    public function getPictureUrl(){
+        $img_domain = "https://api.dataporten.no/userinfo/v1/user/media/";
+        $img_id = $this->getField("profilephoto");
+
+        return $img_domain.$img_id;
+    }
 
     private function getField($key)
     {
-        return isset($this->data[$key]) ? $this->data[$key] : null;
+        return isset($this->data['user'][$key]) ? $this->data['user'][$key] : null;
     }
 }
 

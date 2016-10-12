@@ -49,6 +49,7 @@ class FeideProvider extends AbstractProvider
     {
         // TODO: Implement checkResponse() method.
         if (!empty($data['error'])) {
+            var_dump($data);
             $message = $data['message'];
             throw new IdentityProviderException($message, 403, $data);
         }
